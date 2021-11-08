@@ -31,7 +31,7 @@ print (senders)
 import smtplib
 from email.message import EmailMessage
 server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-server.login("bla@gmail.com", "bla")
+server.login("bla@gmail.com", "password")
 
 for i in range(len(senders)):
   msg = EmailMessage()
