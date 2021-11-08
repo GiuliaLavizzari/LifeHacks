@@ -18,7 +18,6 @@ def check (senders, receivers):
 
 receivers = ["andre", "borghe", "saraC"]#, "roby", "auri", "ste", "giuli"] #receivers
 senders = ["andre", "borghe", "saraC"]#, "roby", "auri", "ste", "giuli"] #senders
-#mails = ["andreabonfiglio.ab@gmail.com","saraborghe.98@gmail.com" , "sara.cavallari98@gmail.com" , "robertamantelli0@gmail.com", "aurora.bernardinelli@gmail.com" , "steriva.07@gmail.com", "giulia.lavizzari@gmail.com"]
 
 print (receivers)
 print (senders)
@@ -32,13 +31,13 @@ print (senders)
 import smtplib
 from email.message import EmailMessage
 server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-server.login("babbosecretnatalesanta@gmail.com", "secretsanta")
+server.login("bla@gmail.com", "bla")
 
 for i in range(len(senders)):
   msg = EmailMessage()
   msg.set_content("Ciao "+senders[i]+",\nDovrai fare il regalo per "+receivers[i]+".\nBuon Natale con largo anticipo, e non ridurti all'ultimo!\n\nBabbo Secret Natale Santa")
   msg['Subject'] = 'secret santa :) '
-  msg['From'] = "babbosecretnatalesanta@gmail.com"
+  msg['From'] = "bla@gmail.com"
   msg['To'] = mails[i]
   server.send_message(msg)
 
