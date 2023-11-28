@@ -1,13 +1,32 @@
+# https://catagolue.hatsya.com/object/xq7_3nw17862z6952/b3s23
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-ROW = 10
-COL = 10
-size = (ROW,COL)
-proba_0 = 0.6
+parser = argparse.ArgumentParser(description='Command line options parser')
+parser.add_argument("-sp", "--spaceship", action="store_true", help="Creates a spaceship")
+args = parser.parse_args()
 
-table=np.random.choice([0, 1], size=size, p=[proba_0, 1-proba_0])
+ROW = 30
+COL = 30
+size = (ROW,COL)
+
+if args.spaceship == True:
+    glider_pattern = np.array([
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [1, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0]
+    ], dtype=np.int8)
+
+    # Enlarge to a ROWxCOL matrix
+    table = np.zeros((ROW, COL), dtype=np.int8)
+    table[0:5, 0:5] = glider_pattern
+else:
+    proba_0 = 0.6
+    table=np.random.choice([0, 1], size=size, p=[proba_0, 1-proba_0])
 
 fig = plt.figure()
 plt.axis('off')
@@ -35,3 +54,6 @@ plt.show()
 
 from matplotlib.animation import PillowWriter
 ani.save("gameOfLife.gif", writer=PillowWriter(fps=4))
+
+
+
